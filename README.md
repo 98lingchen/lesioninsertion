@@ -1,8 +1,10 @@
-# Synthesis of Cerebral Infarction and Hemorrhage on Brain CT with  Latent Diffusion
+# Synthesis of Cerebral Infarction and Hemorrhage on Brain CT via Latent Diffusion Models
 
-This repository contains the implementation of our latent diffusion framework for Cerebral Infarction and Hemorrhage on Brain CT
+This repository contains the implementation of a latent diffusion framework for synthesizing realistic cerebral infarction and intracranial hemorrhage lesions on non-contrast brain CT. The proposed method generates anatomically consistent pathological regions while preserving surrounding normal brain structures.
 
-### Requirements
+---
+
+## Requirements
 
 ```bash
 torch
@@ -16,61 +18,65 @@ einops
 tqdm
 ```
 
-Install dependencies:
+Install dependencies with:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## Datasets
+---
 
 ## Datasets
 
-The experiments were conducted using publicly available stroke and hemorrhage CT datasets.
+The experiments were conducted using publicly available ischemic stroke and intracranial hemorrhage CT datasets.
 
-- AISD (Acute Ischemic Stroke Dataset):
-  [https://github.com/griffinliang/aisd](https://github.com/griffinliang/aisd)
+### Ischemic Stroke
 
-- INSTANCE 2022 (INtracranial Hemorrhage SegmenTAtion ChallengE):
-  [https://instance.grand-challenge.org/](https://instance.grand-challenge.org/)
+- **AISD (Acute Ischemic Stroke Dataset)**  
+  https://github.com/griffinliang/aisd
 
-- BHSD (Brain Hemorrhage Segmentation Dataset):
-  [https://arxiv.org/abs/2308.11298](https://github.com/White65534/BHSD/tree/2ec4322a5a644494a312df891a3089bbf74c136a)
+### Intracranial Hemorrhage
 
-- SinoCT:
-  [https://huggingface.co/datasets/yhygao/SinoCT](https://aimi.stanford.edu/datasets/sinoct)
+- **INSTANCE 2022 (INtracranial Hemorrhage SegmenTAtion ChallengE)**  
+  https://instance.grand-challenge.org/
 
+- **BHSD (Brain Hemorrhage Segmentation Dataset)**  
+  https://github.com/White65534/BHSD
 
+### Normal Brain CT
+
+- **SinoCT**  
+  https://aimi.stanford.edu/datasets/sinoct
+
+Please download the datasets and organize them according to the paths specified in the training scripts.
+
+---
 
 ## Training
 
-### Train VAE
-
-Run:
+### Train the VAE
 
 ```bash
 python scripts/train_image_vae.py
 ```
 
-### Train Lesion Diffusion Model
-
-Run:
+### Train the Lesion Diffusion Model
 
 ```bash
 python scripts/train_image_diffusion.py
 ```
 
-### Train Mask Diffusion Model
-
-Run:
+### Train the Mask Diffusion Model
 
 ```bash
 python scripts/train_mask_diffusion.py
 ```
 
+---
+
 ## Sampling
 
-Generate synthetic lesions using a trained model:
+Generate synthetic lesions using trained checkpoints:
 
 ```bash
 python scripts/sample.py
@@ -78,13 +84,17 @@ python scripts/sample.py
 
 Generated images will be saved to the specified output directory.
 
+---
+
 ## Pretrained Models
 
-## Pretrained Model The pretrained model and related files can be downloaded from [[ OneDrive]]([https://drive.google.com/drive/folders/1vqyvFI3SB4hDb--3-PMI_hV2g75NdNz2?usp=sharing](https://buckeyemailosu-my.sharepoint.com/:f:/g/personal/chen_15048_osu_edu/IgB6iBv0ySKWRqlemRw69shfAYC0hxa3sYOoK10Y_qdvNOo?e=DhMYat)).
+Pretrained checkpoints and related files can be downloaded from:
 
+**OneDrive**
 
+https://buckeyemailosu-my.sharepoint.com/:f:/g/personal/chen_15048_osu_edu/IgB6iBv0ySKWRqlemRw69shfAYC0hxa3sYOoK10Y_qdvNOo?e=DhMYat
 
+Please place the downloaded checkpoints in the corresponding checkpoint directory before running inference.
 
-## Acknowledgments
+---
 
-This work builds upon several excellent open-source projects, including diffusion models, latent diffusion models, and medical image generation frameworks. We thank the authors for making their code publicly available.
