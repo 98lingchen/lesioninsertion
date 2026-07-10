@@ -1,6 +1,6 @@
 # Synthesis of Cerebral Infarction and Hemorrhage on Brain CT via Latent Diffusion Models
 
-This repository contains the implementation of a latent diffusion framework for synthesizing realistic cerebral infarction and intracranial hemorrhage lesions on non-contrast brain CT. The proposed method generates anatomically consistent pathological regions while preserving surrounding normal brain structures.
+This repository contains the implementation of a latent diffusion framework for synthesizing infarction and hemorrhage lesions on brain CT. The proposed method generates anatomically consistent pathological regions while preserving surrounding normal brain structures.
 
 ---
 
