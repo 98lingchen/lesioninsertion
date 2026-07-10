@@ -24,10 +24,21 @@ pip install -r requirements.txt
 
 ## Datasets
 
-The AISD is available at:
-INSTANCE 
-BHSD
-SinoCT
+## Datasets
+
+The experiments were conducted using publicly available stroke and hemorrhage CT datasets.
+
+- AISD (Acute Ischemic Stroke Dataset):
+  [https://github.com/griffinliang/aisd](https://github.com/griffinliang/aisd)
+
+- INSTANCE 2022 (INtracranial Hemorrhage SegmenTAtion ChallengE):
+  [https://instance.grand-challenge.org/](https://instance.grand-challenge.org/)
+
+- BHSD (Brain Hemorrhage Segmentation Dataset):
+  [https://arxiv.org/abs/2308.11298](https://github.com/White65534/BHSD/tree/2ec4322a5a644494a312df891a3089bbf74c136a)
+
+- SinoCT:
+  [https://huggingface.co/datasets/yhygao/SinoCT](https://aimi.stanford.edu/datasets/sinoct)
 
 
 
