@@ -92,7 +92,7 @@ Pretrained checkpoints and related files can be downloaded from:
 
 **OneDrive**
 
-https://buckeyemailosu-my.sharepoint.com/:f:/g/personal/chen_15048_osu_edu/IgB6iBv0ySKWRqlemRw69shfAYC0hxa3sYOoK10Y_qdvNOo?e=DhMYat
+[OneDrive](https://buckeyemailosu-my.sharepoint.com/:f:/g/personal/chen_15048_osu_edu/IgB6iBv0ySKWRqlemRw69shfAYC0hxa3sYOoK10Y_qdvNOo?e=DhMYat).
 
 Please place the downloaded checkpoints in the corresponding checkpoint directory before running inference.
 
