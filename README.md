@@ -90,9 +90,9 @@ Generated images will be saved to the specified output directory.
 
 Pretrained checkpoints and related files can be downloaded from:
 
-**OneDrive**
+**GoogleDrive**
 
-[OneDrive](https://buckeyemailosu-my.sharepoint.com/:f:/g/personal/chen_15048_osu_edu/IgB6iBv0ySKWRqlemRw69shfAYC0hxa3sYOoK10Y_qdvNOo?e=DhMYat).
+[GoogleDrive](https://drive.google.com/drive/folders/1RTffWz4nZGbSj53-8iLRSSHc0Kj8bq6v?usp=sharing)).
 
 Please place the downloaded checkpoints in the corresponding checkpoint directory before running inference.
 
