@@ -92,7 +92,7 @@ Pretrained checkpoints and related files can be downloaded from:
 
 **GoogleDrive**
 
-[GoogleDrive]((https://drive.google.com/drive/folders/1RTffWz4nZGbSj53-8iLRSSHc0Kj8bq6v?usp=sharing)).
+[GoogleDrive](https://drive.google.com/drive/folders/1RTffWz4nZGbSj53-8iLRSSHc0Kj8bq6v?usp=sharing).
 
 Please place the downloaded checkpoints in the corresponding checkpoint directory before running inference.
 
