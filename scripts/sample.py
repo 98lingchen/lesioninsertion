@@ -31,19 +31,12 @@ import json
 from scipy.ndimage import binary_erosion
 
 def save_3d_volume_as_png(volume_3d, save_path, v_min =0, v_max =100):
-    """
-    将 256x256x32 的 3D 图像保存为一个 .png 文件。
-    每行显示 8 张切片，共 4 行，组成一个 mosaic。
 
-    Args:
-        volume_3d (np.ndarray): 形状为 (256, 256, 32) 的图像。
-        save_path (str): 输出文件路径，如 'output.png'。
-    """
-    assert volume_3d.shape == (256, 256, 32), "输入必须为 256x256x32 的 3D 图像"
+    assert volume_3d.shape == (256, 256, 32), "input 256x256x32"
 
     num_slices = volume_3d.shape[2]
     cols = 8
-    rows = (num_slices + cols - 1) // cols  # 自动计算行数
+    rows = (num_slices + cols - 1) // cols 
 
     fig, axes = plt.subplots(rows, cols, figsize=(cols * 2, rows * 2))
 
@@ -76,7 +69,7 @@ def apply_transfer_to_img(img: np.array, bins: np.array, bins_mapped: np.array, 
 
 def reverse_histogram_equalization(img, histogram_csv):
 
-    # 加载映射函数
+
     df = pd.read_csv(histogram_csv)
     bins = df['HU'].values
     bins_mapped = df['HU_mapped'].values
@@ -86,7 +79,7 @@ def reverse_histogram_equalization(img, histogram_csv):
     img_restored = apply_transfer_to_img(img, bins, bins_mapped, reverse=True)
 
     return img_restored
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # 忽略 TensorFlow/TensorBoard 的 info & warning
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  
 torch.manual_seed(0)
 masked_condition = True
 
@@ -156,8 +149,7 @@ pipeline_mask = DiffusionPipeline(
     masked_condition=masked_condition
 )
 
-ckpt_path = '/mnt/data/lesion_insertion/AISDruns/diffusion_generate_mask/2025_04_16_135620/epoch=874-step=790700.ckpt'
-#'./medfusion_3d/runs/LDM_VQGAN/2024_06_07_175241/epoch=1079-step=53999.ckpt'
+ckpt_path = ''
 pipeline_mask.load_pretrained(Path(ckpt_path))
 
 pipeline_mask.to(device)
@@ -213,8 +205,8 @@ noise_scheduler_kwargs = {
 }
 
 
-latent_embedder = VAE # VQVAE: "/home/local/PARTNERS/rh384/runs/VAE/epoch=114-step=23000.ckpt"
-latent_embedder_checkpoint = "/mnt/data/lesion_insertion/stroke0520/VAE256/2025_05_21_132417/epoch=903-step=226000.ckpt"
+latent_embedder = VAE 
+latent_embedder_checkpoint = ""
 
 # ------------ Initialize Pipeline ------------
 pipeline_lesion = DiffusionPipeline0121(
@@ -237,12 +229,9 @@ pipeline_lesion = DiffusionPipeline0121(
     masked_condition=masked_condition
 )
 
-# ------------ Load Model ------------
-# pipeline = DiffusionPipeline.load_best_checkpoint(path_run_dir)
-# pipeline = DiffusionPipeline.load_from_checkpoint("./medfusion_3d/runs/LDM_VQGAN/2024_06_07_115628/epoch=199-step=9999.ckpt") #/home/local/PARTNERS/rh384/runs/LDM/epoch=119-step=24000.ckpt")
 
-ckpt_path = '/mnt/data/lesion_insertion/stroke0520/diffusion_generate_lesion_8ch/2025_05_23_022236/epoch=2440-step=524700.ckpt'
-#'./medfusion_3d/runs/LDM_VQGAN/2024_06_07_175241/epoch=1079-step=53999.ckpt'
+ckpt_path = ''
+
 pipeline_lesion.load_pretrained(Path(ckpt_path))
 
 pipeline_lesion.to(device)
@@ -257,21 +246,20 @@ pipeline_lesion.to(device)
 
 
 
-inputfolder = "/mnt/data/ctsinogram/nii2/test/an2"
-targetfolder = "/mnt/data/ctsinogram/nii2/test/original2"
-savefolder = '/workspace/lesion_insertion/Mask2PET3D_2/scripts/AISD/results_generated_lesion3D2'
+inputfolder =""
+targetfolder = ""
+savefolder = ""
 
 
-stats_csv_path = "/workspace/lesion_insertion/Mask2PET3D_2/ctsinogram/normalization.csv"
-histogram_csv = "/workspace/lesion_insertion/Mask2PET3D_2/AISD_preprocessing3D/histogram.csv"
+stats_csv_path = ""
+histogram_csv = ""
 
 
 input_files = set(f for f in os.listdir(inputfolder) if f.endswith(".nii") or f.endswith(".nii.gz"))
 target_files = set(f for f in os.listdir(targetfolder) if f.endswith(".nii") or f.endswith(".nii.gz"))
 common_files = sorted(input_files & target_files)
 
-print(f"共找到 {len(common_files)} 对匹配的文件")
-#%%
+
 
 
 s = 5000
@@ -290,16 +278,16 @@ for fname in common_files:
     img_original = img_original/100
 
 
-    with open("/workspace/lesion_insertion/Mask2PET3D_2/AISD_preprocessing3D/lesion_distribution_256.json", "r") as f:
+    with open("", "r") as f:
         lesion_distribution = json.load(f)
 
-    # 随机选择
+
     central_slice = np.random.choice(lesion_distribution["max_mask_slice"]["values"])
     size = np.random.choice(lesion_distribution["max_mask_size"]["values"])
     num_slice = np.random.choice(lesion_distribution["nonzero_slice_count"]["values"])
     size = s
     print('central_slice', central_slice, 'size', size, 'num_slice', num_slice)
-    # size, central_slice, num_slice = 1000, 10, 5
+
 
     img_an2d = img_an[:,:,central_slice]
     img_original2d = img_original[:,:,central_slice]
